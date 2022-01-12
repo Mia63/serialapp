@@ -1,0 +1,21 @@
+<form [formGroup]="newCommentForm" (ngSubmit)="onSubmit()">
+  <div class="mb-3">
+    <label for="author" class="form-label">Votre pseudo</label>
+    <input type="text" class="form-control" id="author" formControlName="author" />
+  </div>
+
+
+  <div class="mb-3">
+    <label for="content" class="form-label">Votre commentaire</label>
+    <textarea
+      class="form-control"
+      id="content"
+      rows="3"
+      formControlName="content"
+    ></textarea>
+  </div>
+
+
+
+  <button type="submit" class="btn btn-success">Ajouter la série</button>
+</form>

@@ -1,0 +1,49 @@
+<form (ngSubmit)="onSubmit(form)" #form="ngForm">
+  <!-- Errors -->
+  <div
+    *ngIf="username.invalid && (username.dirty || username.touched)"
+    class="alert alert-danger"
+  >
+    <div
+      *ngIf="username.errors['minlength']"
+    >
+      Le nom d'utilisateur doit avoir au moins 4 caractères
+    </div>
+  </div>
+<!-- ------ -->
+
+  <div class="mb-3">
+    <label for="username" class="form-label">Nom d'utilisateur</label>
+    <input
+    type="text"
+    class="form-control"
+    id="username"
+    name="username"
+    ngModel
+    #username="ngModel"
+    minlength="4"
+    required
+    >
+  </div>
+  <div class="mb-3">
+    <label for="password" class="form-label">Password</label>
+    <input type="password"
+    class="form-control"
+    id="password"
+    name="password"
+    ngModel
+    #password="ngModel"
+    required
+    minlength="4"
+    >
+  </div>
+
+  <button
+  type="submit"
+  class="btn btn-success"
+  [disabled]="username.invalid"
+  >Se connecter
+</button>
+</form>
+
+

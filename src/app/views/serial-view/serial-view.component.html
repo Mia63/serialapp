@@ -1,0 +1,41 @@
+<div *ngIf="serial" class="serial">
+  <div class="card mb-3 mx-auto" style="max-width: 540px">
+    <div class="row g-0">
+      <div class="col-md-4">
+        <img src="{{ serial.src() }}" class="rounded-start" alt="{{ serial.name }}" />
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">{{ serial.name }}</h5>
+          <p class="card-text">{{ serial.releasedAt | date: "dd/MM/yyyy" }}</p>
+          <p class="card-text">
+            <small class="text-muted">{{ serial.description }}</small>
+          </p>
+          <p class="card-text">Nombre de saisons : {{ serial.nbOfSeasons }}</p>
+          <p class="card-text">Note : {{ serial.critique }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Comments -->
+  <div>
+    <a routerLink="/serial/{{ serial.id }}/comment" class="btn btn-info">Ajouter un commentaire</a>
+  </div>
+
+  <small>{{ serial.comments.length }} Commentaires</small>
+  <ul class="comments">
+    <li *ngFor="let comment of serial.comments">
+      <header>
+        <strong>{{ comment.author }}</strong>
+        <small>{{comment.createdAt | date:"dd/MM/yyyy"}}</small>
+      </header>
+      <p>{{comment.content }}</p>
+    </li>
+  </ul>
+</div>
+
+<!-- If we don't have a Serial -->
+<div *ngIf="serial == undefined">
+  <h3>Cette série n'existe pas</h3>
+</div>

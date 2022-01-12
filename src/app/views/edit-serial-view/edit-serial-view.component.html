@@ -1,0 +1,57 @@
+<form [formGroup]="editSerialForm" (ngSubmit)="onSubmit()">
+  <div class="mb-3">
+    <label for="name" class="form-label">Titre</label>
+    <input type="text"
+    class="form-control"
+    id="name"
+    formControlName="name"
+    [(ngModel)]="serial.name"
+    />
+  </div>
+
+  <div class="mb-3">
+    <label for="releasedAt" class="form-label">Date de sortie</label>
+    <input
+      type="date"
+      class="form-control"
+      id="releasedAt"
+      formControlName="releasedAt"
+      [(ngModel)]="serial.releasedAt"
+    />
+  </div>
+
+  <div class="mb-3">
+    <label for="nbOfSeasons" class="form-label">Nombre de saisons</label>
+    <input
+      type="number"
+      class="form-control"
+      id="nbOfSeasons"
+      formControlName="nbOfSeasons"
+      [(ngModel)]="serial.nbOfSeasons"
+    />
+  </div>
+
+  <div class="mb-3">
+    <label for="description" class="form-label"> Description </label>
+    <textarea
+      class="form-control"
+      id="description"
+      rows="3"
+      formControlName="description"
+      [(ngModel)]="serial.description"
+    ></textarea>
+  </div>
+
+  <div class="mb-3">
+    <label for="critique" class="form-label">Critique</label>
+    <input
+      type="text"
+      class="form-control"
+      id="critique"
+      formControlName="critique"
+      [(ngModel)]="serial.critique"
+    />
+  </div>
+
+  <button type="submit" class="btn btn-success">Modifier la série</button>
+</form>

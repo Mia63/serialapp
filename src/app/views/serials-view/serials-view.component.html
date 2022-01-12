@@ -1,0 +1,41 @@
+<table class="table table-striped table-dark table-hover serials-table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Image</th>
+      <th scope="col">Id</th>
+      <th scope="col">Titre</th>
+      <th scope="col">Date de sortie</th>
+      <th scope="col" class="text-center">Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let serial of serials">
+      <td>
+          <img src="{{ serial.src() }}"
+          alt="{{ serial.name }}"
+          >
+      </td>
+      <td>{{ serial.id }}</td>
+      <td>{{ serial.name }}</td>
+      <td>{{ serial.releasedAt | date: "dd/MM/yyyy" }}</td>
+      <td class="text-center">
+        <a routerLink="/serial/{{serial.id}}" type="button" class="btn btn-outline-info">
+          Voir
+        </a>
+        <a routerLink="/serial/edit/{{serial.id}}" type="button" class="btn btn-outline-warning">
+          Modifier
+        </a>
+        <button
+        (click)="onClicDeleteOneSerial(serial.id)"
+        type="button" class="btn btn-outline-danger">
+          Supprimer
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<a routerLink="/serial/new" class="btn btn-success">
+  Ajouter une série
+</a>
